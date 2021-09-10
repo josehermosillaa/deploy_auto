@@ -6,13 +6,14 @@ import time
 #ip app repo link proyecto
 #ojo que el archivo le puse requerimientos.txt modificar el nombre si lo requiere!
 def deploy(link, repo, proyecto,app, ip):
-    cmd = ['sudo apt-get install nginx', 'sudo apt-get install python3-venv','python3 -m venv venv',
+    cmd = ['sudo apt update','sudo apt-get install nginx', 'sudo apt-get install python3-venv','python3 -m venv venv',
     'source venv/bin/activate',f'git clone {link}', f'cd {repo}','pip install -r requerimientos.txt ', 'pip install gunicorn']
     for i in cmd:
         os.system(i)
 
     #ip se debe ingresar sin  comillas
     print('-'*15 + ' reemplazando Ip ' + '-'*15)
+    os.system(f'cd {proyecto}')
     for line in fileinput.FileInput("settings.py",inplace=1):
         line = line.replace("ALLOWED_HOSTS =",f'ALLOWED_HOSTS = ["{ip}"] #')
         line = line.replace("DEBUG = True","DEBUG = False")
@@ -22,7 +23,8 @@ def deploy(link, repo, proyecto,app, ip):
     with open('settings.py','a+',encoding='utf-8') as f:
         f.write('\n')
         f.write(ultima_linea)
-
+    print('-'*15 + 'saliendo de settings y el proyecto' + '-'*15)
+    os.system('cd ..')
     #las claves de bases de datos no se estan considerando, por lo que el script servira solo
     #para la construccion en sqlite
     print('-'*15 + 'segundos comandos' + '-'*15)
