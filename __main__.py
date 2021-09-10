@@ -89,7 +89,7 @@ def deploy(link, repo, proyecto,app, ip):
     print('-'*15 + 'Hemos acabado, hasta la proxima' + '-'*15)
 
 def main():
-    if len(sys.argv) != 5:
+    if len(sys.argv) < 5:
         print('Usage error')
         sys.exit()
     link = sys.argv[1]
