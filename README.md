@@ -12,7 +12,7 @@
 </p>
 <p>Para usarlo:
 clonar este repositorio en su maquina
-<strong>activar super usuario </strong>
+<h3><strong>activar super usuario </strong></h3>
 <h3>sudo su</h3>
 </p>
 comando ejecucion
