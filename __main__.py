@@ -12,14 +12,13 @@ def deploy(link, repo, proyecto,app, ip):
     for i in cmd:
         os.system(i)
     
-    os.chdir(f'/{repo}')
+    os.chdir(f'/home/ubuntu/{repo}')
     # sedebe entrar al repo  =[ f'cd {repo}',
     cmd5 = ['pip install -r requerimientos.txt ', 'pip install gunicorn']
     # #ip se debe ingresar sin  comillas
     # se debe entrar al proyecto
-    os.chdir(f'/{repo}/{proyecto}')
+    os.chdir(f'/home/ubuntu/{repo}/{proyecto}')
     print('-'*15 + ' reemplazando Ip ' + '-'*15)
-    os.system(f'cd {proyecto}')
     for line in fileinput.FileInput("settings.py",inplace=1):
         line = line.replace("ALLOWED_HOSTS =",f'ALLOWED_HOSTS = ["{ip}"] #')
         line = line.replace("DEBUG = True","DEBUG = False")
@@ -30,7 +29,7 @@ def deploy(link, repo, proyecto,app, ip):
         f.write('\n')
         f.write(ultima_linea)
     print('-'*15 + 'saliendo de settings y el proyecto' + '-'*15)
-    os.chdir(f'/{repo}')
+    os.chdir(f'/home/ubuntu/{repo}')
     ## se debe salir del  proyecto os.system('cd ..')
     #las claves de bases de datos no se estan considerando, por lo que el script servira solo
     #para la construccion en sqlite
