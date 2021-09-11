@@ -96,12 +96,12 @@ WantedBy=multi-user.target'''
         print(line)
 
 
-    print('-'*15 + 'ultimos comandos TERMINANDO' + '-'*15)
+    # print('-'*15 + 'ultimos comandos TERMINANDO' + '-'*15)
 
-    cmd4 =[f'sudo ln -s /etc/nginx/sites-available/{proyecto} /etc/nginx/sites-enabled','sudo nginx -t','sudo rm /etc/nginx/sites-enabled/default','sudo service nginx restart']
+    # cmd4 =[f'sudo ln -s /etc/nginx/sites-available/{proyecto} /etc/nginx/sites-enabled','sudo nginx -t','sudo rm /etc/nginx/sites-enabled/default','sudo service nginx restart']
 
-    for i in cmd4:
-        os.system(i)
+    # for i in cmd4:
+    #     os.system(i)
 
     print('-'*15 + 'Hemos acabado, hasta la proxima' + '-'*15)
 
