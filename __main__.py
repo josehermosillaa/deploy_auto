@@ -46,6 +46,8 @@ def deploy(link, repo, proyecto,app, ip):
     # time.sleep(10)
     # exit()
     # print('terinamos la ejecucion, continuamos')
+    '''---------hasta aqui ejecuta, sin activar el entorno virtual------'''
+
 
     service = f'''[Unit]
     Description=gunicorn daemon
@@ -66,7 +68,7 @@ def deploy(link, repo, proyecto,app, ip):
     cmd3 = ['sudo systemctl daemon-reload','sudo systemctl restart gunicorn']
 
     texto ='''
-    server '{'
+    server {
     listen 80;
     server_name '{ip}'.;
     location = /favicon.ico { access_log off; log_not_found off; }
