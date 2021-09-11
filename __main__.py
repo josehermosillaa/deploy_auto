@@ -15,6 +15,8 @@ def deploy(link, repo, proyecto,app, ip):
     os.chdir(f'/home/ubuntu/{repo}')
     # sedebe entrar al repo  =[ f'cd {repo}',
     cmd5 = ['pip install -r requerimientos.txt ', 'pip install gunicorn']
+    for i in cmd5:
+        os.system(i)
     # #ip se debe ingresar sin  comillas
     # se debe entrar al proyecto
     os.chdir(f'/home/ubuntu/{repo}/{proyecto}')
