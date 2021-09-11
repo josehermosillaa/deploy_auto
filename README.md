@@ -4,6 +4,6 @@ Para usarlo:
 activar super usuario 
 sudo su
 
-python3 <link-del-repo-a-clonar> <repositorio> <nombre-del-proyecto> <nombre-de-la-app> <ip>
+python3 <strong>link-del-repo-a-clonar repositorio nombre-del-proyecto nombre-de-la-app ip </strong>
 
 al ejecutar estaria listo! (aun en progreso)
