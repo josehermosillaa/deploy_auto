@@ -6,7 +6,9 @@ import time
 
 #ip app repo link proyecto
 #ojo que el archivo le puse requerimientos.txt modificar el nombre si lo requiere!
+#'sudo su'
 #'sudo apt update'
+#'sudo apt upgrade'
 #'sudo apt install python3-pip'
 #'sudo apt-get install python3-venv'
 #'python3 -m venv venv'
@@ -50,19 +52,19 @@ def deploy(link, repo, proyecto,app, ip):
     # time.sleep(10)
     # exit()
     # print('terinamos la ejecucion, continuamos')
-    '''---------hasta aqui ejecuta, sin activar el entorno virtual------'''
+
 
 
     service = f'''[Unit]
-    Description=gunicorn daemon
-    After=network.target
-    [Service]
-    User=ubuntu
-    Group=www-data
-    WorkingDirectory=/home/ubuntu/{repo}
-    ExecStart=/home/ubuntu/venv/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/{repo}/{proyecto}.sock {proyecto}.wsgi:application
-    [Install]
-    WantedBy=multi-user.target'''
+Description=gunicorn daemon
+After=network.target
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/{repo}
+ExecStart=/home/ubuntu/venv/bin/gunicorn --workers 3 --bind unix:/home/ubuntu/{repo}/{proyecto}.sock {proyecto}.wsgi:application
+[Install]
+WantedBy=multi-user.target'''
 
     with open('/etc/systemd/system/gunicorn.service','a+',encoding='utf-8') as f:
         f.write(service)
