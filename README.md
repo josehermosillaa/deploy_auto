@@ -1,5 +1,14 @@
-<h1>deploy_auto</h1>
+<h1>deploy_auto BETA---</h1>
 <p>Script que busca automatizar el  proceso de deployment en una maquina virtual de AWS 
+<h2>antes de usarlo ejecutar</h2>
+<ol>
+    <li>'sudo apt update'</li>
+    <li>'sudo apt upgrade'</li>
+    <li>'sudo apt install python3-pip'</li>
+    <li>'sudo apt-get install python3-venv'</li>
+    <li>'python3 -m venv venv'</li>
+    <li>'source venv/bin/activate'</li>
+</ol>
 Para usarlo:</p>
 
 <strong>activar super usuario </strong>
