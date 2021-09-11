@@ -67,19 +67,18 @@ def deploy(link, repo, proyecto,app, ip):
     print('-'*15 + 'mas comandos' + '-'*15)
     cmd3 = ['sudo systemctl daemon-reload','sudo systemctl restart gunicorn']
 
-    texto ='''
-    server {
-    listen 80;
-    server_name '{ip}'.;
-    location = /favicon.ico { access_log off; log_not_found off; }
-    location /static/ {
-        root /home/ubuntu/{repo};
-    }
-    location / {
-        include proxy_params;
-        proxy_pass http://unix:/home/ubuntu/{repo}/{proyecto}.sock;
-    }
-    }'''
+    texto ='''server {
+                listen 80;
+                server_name {ip};
+                location = /favicon.ico { access_log off; log_not_found off; }
+                location /static/ {
+                    root /home/ubuntu/{repo};
+                }
+                location / {
+                    include proxy_params;
+                    proxy_pass http://unix:/home/ubuntu/{repo}/{proyecto}.sock;
+                }
+            }'''
 
     with open(f'/etc/nginx/sites-available/{proyecto}','a+',encoding='utf-8') as f:
         f.write(texto)
