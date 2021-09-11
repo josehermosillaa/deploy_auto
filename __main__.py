@@ -36,7 +36,7 @@ def deploy(link, repo, proyecto,app, ip):
     #para la construccion en sqlite
     print('-'*15 + 'segundos comandos' + '-'*15)
 
-    cmd2 = ['python manage.py collectstatic','python manage.py makemigrations',f'python manage.py makemigrations {app}','pip install cryptography','python manage.py migrate',f'python manage.py migrate {app}']
+    cmd2 = ['python3 manage.py collectstatic','python3 manage.py makemigrations',f'python3 manage.py makemigrations {app}','pip install cryptography','python3 manage.py migrate',f'python3 manage.py migrate {app}']
     for i in cmd2:
         os.system(i)
 
