@@ -1,4 +1,4 @@
-# deploy_auto
+deploy_auto
 Script que busca automatizar el  proceso de deployment en una maquina virtual de AWS 
 Para usarlo:
 activar super usuario 
