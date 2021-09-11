@@ -6,9 +6,13 @@ import time
 
 #ip app repo link proyecto
 #ojo que el archivo le puse requerimientos.txt modificar el nombre si lo requiere!
+#'sudo apt update'
+#'sudo apt install python3-pip'
+#'sudo apt-get install python3-venv'
+#'python3 -m venv venv'
+#'source venv/bin/activate'
 def deploy(link, repo, proyecto,app, ip):
-    cmd = ['sudo apt update','sudo apt-get install nginx','sudo apt install python3-pip' ,'sudo apt-get install python3-venv','python3 -m venv venv',
-    'source venv/bin/activate',f'git clone {link}']
+    cmd = ['sudo apt-get install nginx',f'git clone {link}']
     for i in cmd:
         os.system(i)
     
