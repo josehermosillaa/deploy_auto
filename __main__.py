@@ -75,37 +75,38 @@ WantedBy=multi-user.target'''
     cmd3 = ['sudo systemctl daemon-reload','sudo systemctl restart gunicorn'] #sudo systemctl restart gunicorn
     for i in cmd3:
         os.system(i)
-        
+
     time.sleep(3)
-    # texto ='''server {
-    #             listen 80;
-    #             server_name {ip};
-    #             location = /favicon.ico { access_log off; log_not_found off; }
-    #             location /static/ {
-    #                 root /home/ubuntu/{repo};
-    #             }
-    #             location / {
-    #                 include proxy_params;
-    #                 proxy_pass http://unix:/home/ubuntu/{repo}/{proyecto}.sock;
-    #             }
-    #         }'''
+    
+    texto ='''server {
+                listen 80;
+                server_name {ip};
+                location = /favicon.ico { access_log off; log_not_found off; }
+                location /static/ {
+                    root /home/ubuntu/{repo};
+                }
+                location / {
+                    include proxy_params;
+                    proxy_pass http://unix:/home/ubuntu/{repo}/{proyecto}.sock;
+                }
+            }'''
 
-    # with open(f'/etc/nginx/sites-available/{proyecto}','a+',encoding='utf-8') as f:
-    #     f.write(texto)
+    with open(f'/etc/nginx/sites-available/{proyecto}','a+',encoding='utf-8') as f:
+        f.write(texto)
 
-    # for line in fileinput.FileInput(f'/etc/nginx/sites-available/{proyecto}',inplace=1):
-    #     line = line.replace('{ip}',f'{ip}')
-    #     line = line.replace("{repo}",f"{repo}")
-    #     line = line.replace("{proyecto}",f"{proyecto}")
-    #     print(line)
+    for line in fileinput.FileInput(f'/etc/nginx/sites-available/{proyecto}',inplace=1):
+        line = line.replace('{ip}',f'{ip}')
+        line = line.replace("{repo}",f"{repo}")
+        line = line.replace("{proyecto}",f"{proyecto}")
+        print(line)
 
 
-    # print('-'*15 + 'ultimos comandos TERMINANDO' + '-'*15)
+    print('-'*15 + 'ultimos comandos TERMINANDO' + '-'*15)
+    os.chdir(f'/home/ubuntu/{repo}')
+    cmd4 =[f'sudo ln -s /etc/nginx/sites-available/{proyecto} /etc/nginx/sites-enabled','sudo nginx -t','sudo rm /etc/nginx/sites-enabled/default','sudo service nginx restart']
 
-    # cmd4 =[f'sudo ln -s /etc/nginx/sites-available/{proyecto} /etc/nginx/sites-enabled','sudo nginx -t','sudo rm /etc/nginx/sites-enabled/default','sudo service nginx restart']
-
-    # for i in cmd4:
-    #     os.system(i)
+    for i in cmd4:
+        os.system(i)
 
     print('-'*15 + 'Hemos acabado, hasta la proxima' + '-'*15)
 
