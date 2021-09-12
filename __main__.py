@@ -71,29 +71,29 @@ WantedBy=multi-user.target'''
 
 
     print('-'*15 + 'mas comandos' + '-'*15)
-    cmd3 = ['sudo systemctl daemon-reload','sudo systemctl restart gunicorn']
+    cmd3 = ['sudo systemctl daemon-reload','sudo systemctl restart gunicorn'] #sudo systemctl restart gunicorn
 
-    texto ='''server {
-                listen 80;
-                server_name {ip};
-                location = /favicon.ico { access_log off; log_not_found off; }
-                location /static/ {
-                    root /home/ubuntu/{repo};
-                }
-                location / {
-                    include proxy_params;
-                    proxy_pass http://unix:/home/ubuntu/{repo}/{proyecto}.sock;
-                }
-            }'''
+    # texto ='''server {
+    #             listen 80;
+    #             server_name {ip};
+    #             location = /favicon.ico { access_log off; log_not_found off; }
+    #             location /static/ {
+    #                 root /home/ubuntu/{repo};
+    #             }
+    #             location / {
+    #                 include proxy_params;
+    #                 proxy_pass http://unix:/home/ubuntu/{repo}/{proyecto}.sock;
+    #             }
+    #         }'''
 
-    with open(f'/etc/nginx/sites-available/{proyecto}','a+',encoding='utf-8') as f:
-        f.write(texto)
+    # with open(f'/etc/nginx/sites-available/{proyecto}','a+',encoding='utf-8') as f:
+    #     f.write(texto)
 
-    for line in fileinput.FileInput(f'/etc/nginx/sites-available/{proyecto}',inplace=1):
-        line = line.replace('{ip}',f'{ip}')
-        line = line.replace("{repo}",f"{repo}")
-        line = line.replace("{proyecto}",f"{proyecto}")
-        print(line)
+    # for line in fileinput.FileInput(f'/etc/nginx/sites-available/{proyecto}',inplace=1):
+    #     line = line.replace('{ip}',f'{ip}')
+    #     line = line.replace("{repo}",f"{repo}")
+    #     line = line.replace("{proyecto}",f"{proyecto}")
+    #     print(line)
 
 
     # print('-'*15 + 'ultimos comandos TERMINANDO' + '-'*15)
