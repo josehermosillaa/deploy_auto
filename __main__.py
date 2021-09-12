@@ -72,7 +72,7 @@ WantedBy=multi-user.target'''
 
     print('-'*15 + 'mas comandos' + '-'*15)
     cmd3 = ['sudo systemctl daemon-reload','sudo systemctl restart gunicorn'] #sudo systemctl restart gunicorn
-    time.sleep(10)
+    time.sleep(3)
     # texto ='''server {
     #             listen 80;
     #             server_name {ip};
