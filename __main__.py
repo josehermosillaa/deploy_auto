@@ -71,7 +71,11 @@ WantedBy=multi-user.target'''
 
 
     print('-'*15 + 'mas comandos' + '-'*15)
+    os.chdir(f'/home/ubuntu/{repo}')
     cmd3 = ['sudo systemctl daemon-reload','sudo systemctl restart gunicorn'] #sudo systemctl restart gunicorn
+    for i in cmd3:
+        os.system(i)
+        
     time.sleep(3)
     # texto ='''server {
     #             listen 80;
